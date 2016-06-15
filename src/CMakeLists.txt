@@ -17,9 +17,9 @@ set(ECTO_PCL_FILES
   io/MergeClouds.cpp
   io/NiConverters.cpp
   io/PCDReader.cpp
-  io/PCDWriter.cpp
+  # io/PCDWriter.cpp
   io/PLYWriter.cpp
-  segmentation/ColorizeClusters.cpp
+  #segmentation/ColorizeClusters.cpp
   segmentation/ExtractPolygonalPrismData.cpp
   segmentation/ExtractLargestCluster.cpp
   segmentation/EuclideanClusterExtraction.cpp
@@ -29,10 +29,15 @@ set(ECTO_PCL_FILES
   surface/MovingLeastSquares.cpp
 )
 
-if (${catkin_VERSION} VERSION_GREATER "0.5.28")
+#[[if (${catkin_VERSION} VERSION_GREATER "0.5.28")
 add_subdirectory(ros)
 else()
   set(ECTO_PCL_FILES ${ECTO_PCL_FILES} io/PCDWriter.cpp)
+endif()]]
+
+if (FOUND_ROS_DEPS)
+  add_subdirectory(ros)
+  set(ECTO_PCL_FILES ${ECTO_PCL_FILES} io/PCDWriter.cpp segmentation/ColorizeClusters.cpp)
 endif()
 
 ectomodule(ecto_pcl INSTALL ${ECTO_PCL_FILES})

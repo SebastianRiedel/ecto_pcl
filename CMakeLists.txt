@@ -6,10 +6,25 @@ SET( QHULL_LIBRARY "${Qhull_LIBRARIES}" )
 
 # Deal with catkin
 find_package(catkin REQUIRED)
-find_package(catkin REQUIRED ecto sensor_msgs pcl_conversions)
-catkin_package(INCLUDE_DIRS include
-               CATKIN_DEPENDS pcl_conversions sensor_msgs
-)
+# Handle optional ROS dependencies
+find_package(sensor_msgs QUIET)
+find_package(pcl_conversions QUIET)
+if(sensor_msgs_FOUND AND pcl_conversions_FOUND)
+    find_package(catkin REQUIRED ecto sensor_msgs pcl_conversions)
+    catkin_package(INCLUDE_DIRS include
+            CATKIN_DEPENDS pcl_conversions sensor_msgs
+            )
+    set(FOUND_ROS_DEPS TRUE)
+else()
+    find_package(catkin REQUIRED ecto)
+    catkin_package(INCLUDE_DIRS include
+            CATKIN_DEPENDS
+            )
+    set(FOUND_ROS_DEPS FALSE)
+endif()
+
+
+
 
 # continue with the find_package
 find_package(PCL REQUIRED)
