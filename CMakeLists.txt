@@ -52,3 +52,5 @@ add_subdirectory(src)
 enable_testing()
 add_subdirectory(test)
 add_subdirectory(samples)
+catkin_install_python(PROGRAMS samples/pcd_viewer.py
+                      DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})

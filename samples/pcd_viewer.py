@@ -29,4 +29,4 @@ if __name__=="__main__":
 
     #sleep 5 seconds and exit.
     event = threading.Event()
-    event.wait(5)
+    event.wait(10)
