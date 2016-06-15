@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 2.8)
 project(ecto_pcl)
 
+find_package(Qhull REQUIRED)
+SET( QHULL_LIBRARY "${Qhull_LIBRARIES}" )
+
 # Deal with catkin
 find_package(catkin REQUIRED)
 find_package(catkin REQUIRED ecto sensor_msgs pcl_conversions)
