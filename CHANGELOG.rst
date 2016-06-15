@@ -1,3 +1,31 @@
+0.4.5 (2016-04-24)
+------------------
+* add dependency on proj to fix PCL compilation on kinetic
+* remove useless dependency on ecto_ros
+* Contributors: Vincent Rabaud
+
+0.4.4 (2016-04-24)
+------------------
+* compile on Xenial
+* fix running examples for doc
+* Contributors: Vincent Rabaud
+
+0.4.3 (2015-09-01)
+------------------
+* SACSegmentationFromNormals: support input indices
+* SACSegmentation: support input indices
+* fix SACSegmentation cell
+* ConvexHull: add input indices
+* remove useless dependency
+* clean tests
+* Added new parameter to ExtractIndices
+  - Added parameter to keep the filtered cloud organized, i.e.,
+  coordinates of 'removed' points are set to 'NaN'
+* add proper test dependency
+* add proper nosetest
+* clean extensions
+* Contributors: Michael Görner, Sven Albrecht, Vincent Rabaud
+
 0.4.2 (2014-12-21)
 ------------------
 * Use the new header with PCL 1.7.0+
